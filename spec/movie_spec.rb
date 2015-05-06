@@ -49,12 +49,12 @@ describe(Movie) do
   end
 
   describe('#update') do
-    # it("will update a movie name") do
-    #   movie = Movie.new({:name => "Superbad", :id => nil})
-    #   movie.save()
-    #   movie.update({:name => "Pineapple Express"})
-    #   expect(movie.name()).to(eq("Pineapple Express"))
-    # end
+    it("will update a movie name") do
+      movie = Movie.new({:name => "Superbad", :id => nil})
+      movie.save()
+      movie.update({:name => "Pineapple Express"})
+      expect(movie.name()).to(eq("Pineapple Express"))
+    end
 
     it("will add actors to a movie") do
       movie = Movie.new({:name => "Superbad", :id => nil})
