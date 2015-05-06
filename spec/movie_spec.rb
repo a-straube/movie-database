@@ -46,4 +46,13 @@ describe(Movie) do
       expect(Movie.find(movie2.id())).to(eq(movie2))
     end
   end
+
+  describe('#update') do
+    it("will update a movie name") do
+      movie = Movie.new({:name => "Superbad", :id => nil})
+      movie.save()
+      movie.update({:name => "Pineapple Express"})
+      expect(movie.name()).to(eq("Pineapple Express"))
+    end
+  end
 end
