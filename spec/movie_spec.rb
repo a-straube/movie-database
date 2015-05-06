@@ -20,4 +20,20 @@ describe(Movie) do
       expect(Movie.all()).to(eq([]))
     end
   end
+
+  describe('#save') do
+    it("saves a movie to the database") do
+      movie = Movie.new({:name => "Superbad", :id => nil})
+      movie.save()
+      expect(Movie.all()).to(eq([movie]))
+    end
+  end
+
+  describe('#==') do
+    it("is the same movie if it has the same name and id") do
+      movie1 = Movie.new({:name => "Superbad", :id => nil})
+      movie2 = Movie.new({:name => "Superbad", :id => nil})
+      expect(movie1).to(eq(movie2))
+    end
+  end
 end
