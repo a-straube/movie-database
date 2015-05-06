@@ -36,4 +36,14 @@ describe(Movie) do
       expect(movie1).to(eq(movie2))
     end
   end
+
+  describe('.find') do
+    it("will find a movie based on its id") do
+      movie1 = Movie.new({:name => "Superbad", :id => nil})
+      movie1.save()
+      movie2 = Movie.new({:name => "Memento", :id => nil})
+      movie2.save()
+      expect(Movie.find(movie2.id())).to(eq(movie2))
+    end
+  end
 end

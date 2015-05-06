@@ -25,4 +25,9 @@ class Movie
   define_method(:==) do |movie2|
     self.name().==(movie2.name()).&(self.id().==(movie2.id()))
   end
+
+  define_singleton_method(:find) do
+
+  end
+
 end
