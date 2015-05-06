@@ -1,6 +1,7 @@
 require('spec_helper')
 
 describe(Movie) do
+
   describe('#name') do
     it("returns the name of a movie") do
       movie_name = Movie.new({:name => "Superbad", :id => nil})
