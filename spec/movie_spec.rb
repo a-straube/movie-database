@@ -14,4 +14,10 @@ describe(Movie) do
       expect(movie_name.id()).to(eq(1))
     end
   end
+
+  describe('.all') do
+    it("is empty at first") do
+      expect(Movie.all()).to(eq([]))
+    end
+  end
 end
