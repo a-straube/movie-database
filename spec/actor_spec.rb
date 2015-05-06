@@ -47,4 +47,13 @@ describe(Actor) do
       expect(Actor.find(actor2.id())).to(eq(actor2))
     end
   end
+
+  describe('#update') do
+    it("updates an actor in the database") do
+      actor = Actor.new({:name => "Ingar Bergman", :id => nil})
+      actor.save()
+      actor.update({:name => "Ingrid Bergman"})
+      expect(actor.name()).to(eq("Ingrid Bergman"))
+    end
+  end
 end

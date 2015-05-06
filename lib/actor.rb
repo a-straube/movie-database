@@ -32,4 +32,11 @@ class Actor
     @name = returned_actor.first().fetch("name")
     Actor.new({:name => @name, :id => @id})
   end
+
+  define_method(:update) do |attributes|
+    @name = attributes.fetch(:name, @name)
+    @id = self.id()
+    DB.exec("UPDATE actors SET name = '#{@name}' WHERE id =  #{@id};")
+
+  end
 end
