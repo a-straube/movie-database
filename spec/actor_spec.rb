@@ -56,4 +56,15 @@ describe(Actor) do
       expect(actor.name()).to(eq("Ingrid Bergman"))
     end
   end
+
+  describe('#delete') do
+    it("deletes an actor from the database") do
+      actor = Actor.new({:name => "Ingar Bergman", :id => nil})
+      actor.save()
+      actor2 = Actor.new({:name => "Ingrid Bergman", :id => nil})
+      actor2.save()
+      actor.delete()
+      expect(Actor.all()).to(eq([actor2]))
+    end
+  end
 end
