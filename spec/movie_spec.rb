@@ -49,11 +49,36 @@ describe(Movie) do
   end
 
   describe('#update') do
-    it("will update a movie name") do
+    # it("will update a movie name") do
+    #   movie = Movie.new({:name => "Superbad", :id => nil})
+    #   movie.save()
+    #   movie.update({:name => "Pineapple Express"})
+    #   expect(movie.name()).to(eq("Pineapple Express"))
+    # end
+
+    it("will add actors to a movie") do
       movie = Movie.new({:name => "Superbad", :id => nil})
       movie.save()
-      movie.update({:name => "Pineapple Express"})
-      expect(movie.name()).to(eq("Pineapple Express"))
+      jonah = Actor.new({:name => "Jonah Hill", :id => nil})
+      jonah.save()
+      seth = Actor.new({:name => "Seth Rogen", :id => nil})
+      seth.save()
+      actors_id = [jonah.id(), seth.id()]
+      movie.update({:actors_id => actors_id})
+      expect(movie.actors()).to(eq([jonah, seth]))
+    end
+  end
+
+  describe('#actors') do
+    it("will return all actors in a specific movie") do
+      movie = Movie.new({:name => "Superbad", :id => nil})
+      movie.save()
+      jonah = Actor.new({:name => "Jonah Hill", :id => nil})
+      jonah.save()
+      seth = Actor.new({:name => "Seth Rogen", :id => nil})
+      seth.save()
+      movie.update({:actors_id => [jonah.id(), seth.id()]})
+      expect(movie.actors()).to(eq([jonah, seth]))
     end
   end
 

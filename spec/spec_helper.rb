@@ -1,6 +1,6 @@
 require('rspec')
 require('pg')
-require('rspec')
+require('pry')
 require('actor')
 require('movie')
 
