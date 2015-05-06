@@ -55,4 +55,15 @@ describe(Movie) do
       expect(movie.name()).to(eq("Pineapple Express"))
     end
   end
+
+  describe('#delete') do
+    it("will delete a movie") do
+      movie = Movie.new({:name => "Superbad", :id => nil})
+      movie.save()
+      movie2 = Movie.new({:name => "Pineapple Express", :id => nil})
+      movie2.save()
+      movie.delete()
+      expect(Movie.all()).to(eq([movie2]))
+    end
+  end
 end
