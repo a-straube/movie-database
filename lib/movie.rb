@@ -26,8 +26,11 @@ class Movie
     self.name().==(movie2.name()).&(self.id().==(movie2.id()))
   end
 
-  define_singleton_method(:find) do
-
+  define_singleton_method(:find) do |id|
+    @id = id
+    result = DB.exec("SELECT * FROM movies WHERE id = #{@id};")
+    @name = result.first.fetch("name")
+    Movie.new({:name => @name, :id => @id})
   end
 
 end
