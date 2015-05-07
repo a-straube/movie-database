@@ -69,9 +69,18 @@ patch('/movies/:id') do
   erb(:movie)
 end
 
+delete('/actors/:id') do
+  @actor = Actor.find(params.fetch("id").to_i())
+  @actor.delete()
+  @actors = Actor.all()
+  @movies = Movie.all()
+  erb(:index)
+end
+
 delete('/movies/:id') do
   @movie = Movie.find(params.fetch("id").to_i())
   @movie.delete()
   @actors = Actor.all()
-  erb(:movie)
+  @movies = Movie.all()
+  erb(:index)
 end

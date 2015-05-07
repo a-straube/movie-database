@@ -33,3 +33,8 @@
 <a href='/'>Return to home page</a>
 <br>
 <a href='/movies'>Add or update a movie.</a>
+
+<form action="/actors/<%= @actor.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit">Delete this actor</button>
+</form>
