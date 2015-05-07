@@ -27,3 +27,14 @@ describe('the path to updating a movie', {:type => :feature}) do
     expect(page).to have_content("This is the page for Rambo")
   end
 end
+
+describe('the path to deleting an actor', {:type => :feature}) do
+  it('allows a user to delete an actor from the database') do
+    actor = Actor.new(:name => 'Sylvester Stallone', :id => nil)
+    actor.save()
+    visit('/')
+    click_link("Sylvester Stallone")
+    click_button("Delete this actor")
+    expect(page).to have_content("Welcome to our actors and movies database.")
+  end
+end

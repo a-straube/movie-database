@@ -74,7 +74,7 @@ delete('/actors/:id') do
   @actor.delete()
   @actors = Actor.all()
   @movies = Movie.all()
-  erb(:index)
+  redirect('/')
 end
 
 delete('/movies/:id') do
@@ -82,5 +82,5 @@ delete('/movies/:id') do
   @movie.delete()
   @actors = Actor.all()
   @movies = Movie.all()
-  erb(:index)
+  redirect('/')
 end
