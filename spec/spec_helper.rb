@@ -3,6 +3,7 @@ require('pg')
 require('pry')
 require('actor')
 require('movie')
+require('capybara/rspec')
 
 DB = PG.connect({:dbname => "movie_database_test"})
 

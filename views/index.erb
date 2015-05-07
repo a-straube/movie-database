@@ -2,7 +2,29 @@
 
 <h3>Here are the movies in our database:</h3>
 
+<% if @movies.any?() %>
+
+  <% @movies.each do |movie| %>
+    <a href='movies/<%= movie.id() %>'><%= movie.name() %></a>
+    <br>
+  <% end %>
+  <% else %>
+  <h3>There are no movies in the database yet.</h3>
+<% end %>
+
 <h3>Here are the actors in our database:</h3>
 
-<a href="/actors">Add new actors to the database.</a>
-<a href="/movies">Add new movies to the database.</a>
+<% if @actors.any?() %>
+
+  <% @actors.each do |actor| %>
+    <a href='actors/<%= actor.id() %>'><%= actor.name() %></a>
+    <br>
+  <% end %>
+  <% else %>
+  <h3>There are no actors in the database yet.</h3>
+<% end %>
+
+<br>
+<a href="/actors">Go to the actors page.</a>
+<br>
+<a href="/movies">Go to the movies page.</a>

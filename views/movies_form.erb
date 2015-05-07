@@ -1,9 +1,36 @@
 <h1>Add a movie</h1>
 
-<form action="/success" method="post">
+<form action="/movies" method="post">
   <div class="form-group">
-    <label for ="add_movie">Enter the name of your movie:</label>
-    <input id="add_movie" name="add_movie" class="form-control" type="text">
+    <label for ="name">Enter the name of your movie:</label>
+    <input id="name" name="name" class="form-control" type="text">
   </div>
   <button type="submit" class="btn-success">Add</button>
 </form>
+<br>
+<% if @movies.any?() %>
+
+  <% @movies.each do |movie| %>
+    <a href='/movies/<%= movie.id() %>'><%= movie.name() %></a>
+    <br>
+    <% end %>
+
+  <% else %>
+  <h3>There are no movies in the database yet.</h3>
+
+<% end %>
+
+
+
+
+
+
+
+
+<br>
+<br>
+<a href='/'>Return to home page and see the list of movies and actors</a>
+<br>
+<a href='/movies'>Add a movie</a>
+<br>
+<a href='/actors'>Add an actor</a>

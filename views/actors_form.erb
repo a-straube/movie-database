@@ -1,13 +1,31 @@
 <h1>Add an actor or actress<h1>
 
-<form action="/success"  method="post">
+<form action="/actors"  method="post">
   <div container="form-control">
     <label for="name">Enter the name of the actor or actress here</label>
     <input id="name" name="name" class="form-control" type="text">
   </div>
 
   <div container="form-control">
-    <button="submit" button type="btn-success">Submit</button>
+    <button type="submit" class="btn-success">Submit</button>
   </div>
 
 </form>
+
+<h1>Here is the list of actors:</h1>
+
+<% if @actors.any?() %>
+
+  <% @actors.each do |actor| %>
+    <a href='/actors/<%= actor.id() %>'><%= actor.name() %></a>
+    <br>
+  <% end %>
+  <% else %>
+  <h3> There are no actors in the database yet.</h3>
+  <% end %>
+
+
+<br>
+<a href='/'>Return to home page</a>
+<br>
+<a href='/movies'>Go to the movies page</a>
