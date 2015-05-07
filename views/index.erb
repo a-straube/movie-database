@@ -6,6 +6,7 @@
 
   <% @movies.each do |movie| %>
     <a href='movies/<%= movie.id() %>'><%= movie.name() %></a>
+
     <br>
   <% end %>
   <% else %>

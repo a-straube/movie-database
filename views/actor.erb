@@ -1,0 +1,35 @@
+<h1>This is the page for <%= @actor.name() %></h1>
+
+<h3>What movies has this actor been in?</h3>
+
+<% if @movies.any?() %>
+
+<form action="/actors/<%= @actor.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+    <% @movies.each() do |movie| %>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="movie_id[]" value="<%= movie.id() %>"><%= movie.name() %>
+        </label>
+      </div>
+    <% end %>
+
+<button type="submit">Add movie</button>
+</form>
+<% end %>
+
+<br>
+<h1>Here are the movies <%= @actor.name() %> has been in:</h1>
+<% if @actor.movies().any?() %>
+  <% @actor.movies().each() do |movie| %>
+    <%= movie.name() %>
+  <br>
+  <% end %>
+  <% else %>
+  <h3>This actor does not have any movies yet.</h3>
+<% end %>
+
+<br>
+<a href='/'>Return to home page</a>
+<br>
+<a href='/movies'>Add or update a movie.</a>
